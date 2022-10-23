@@ -10,9 +10,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: pnpm/action-setup@v2.2.4
         with:
-          cache: pnpm
+          version: 7
       - name: Install node modules
         run:
           pnpm install --frozen-lockfile
