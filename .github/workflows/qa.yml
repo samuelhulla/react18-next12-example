@@ -1,0 +1,24 @@
+name: QA Test
+
+on:
+  [push]
+
+jobs:
+  test-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+      - name: Install node modules
+        run:
+          pnpm install --frozen-lockfile
+      - name: Run syntax check
+        run:
+          pnpm syntax
+      - name: Run semantic check
+        run:
+          pnpm semantic
